@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function SocialLogin() {
   return (
     <>
+      {/* TODO: hr 태그로 하지 않고 div로 처리하네? */}
       <div className="w-full h-px bg-neutral-500" />
       <div className="flex flex-col gap-3">
         <Link
@@ -22,7 +23,7 @@ export default function SocialLogin() {
               clipRule="evenodd"
             ></path>
           </svg>
-          <span>카카오톡으로 시작하기</span>
+          <span>깃헙으로 입장하기</span>
         </Link>
       </div>
     </>

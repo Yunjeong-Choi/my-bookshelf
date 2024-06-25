@@ -9,10 +9,10 @@ import {
 } from "@/lib/constants";
 
 const formSchema = z.object({
-  email: z.string().email().toLowerCase(),
+  email: z.string().email(),
   password: z
     .string({
-      required_error: "Password is required",
+      required_error: "비밀번호는 필수값입니다.",
     })
     .min(PASSWORD_MIN_LENGTH)
     .regex(PASSWORD_REGEX, PASSWORD_REGEX_ERROR),

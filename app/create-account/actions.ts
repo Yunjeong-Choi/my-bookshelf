@@ -8,25 +8,17 @@ import {
   PASSWORD_REGEX_ERROR,
 } from "@/lib/constants";
 
-const passwordRegex = new RegExp(
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*?[#?!@$%^&*-]).+$/
-);
-
+// TODO: 여기에 사용되지 않은 메소드 정리 필요 (toLowerCase, transform, refine 등)
+// TODO: 유효성 검사 규칙 정리 필요
 const formSchema = z
   .object({
     username: z
       .string({
-        invalid_type_error: "Username must be a string!",
-        required_error: "Where is my username???",
+        invalid_type_error: "문자로만 작성해주세요!",
+        required_error: "닉네임은 필수항목입니다.",
       })
-      .trim()
-      .toLowerCase()
-      .transform((username) => `🔥 ${username}`)
-      .refine(
-        (username) => !username.includes("potato"),
-        "No potatoes allowed!"
-      ),
-    email: z.string().email().toLowerCase(),
+      .trim(),
+    email: z.string().email(),
     password: z
       .string()
       .min(PASSWORD_MIN_LENGTH)
@@ -34,11 +26,11 @@ const formSchema = z
     confirm_password: z.string().min(4),
   })
   .superRefine(({ password, confirm_password }, ctx) => {
-    // TODO: 강의(6.2 refinedment)에서는 그냥 refine을 썼는데?
+    // TODO: 강의(6.2 refinement)에서는 그냥 refine을 썼는데?
     if (password !== confirm_password) {
       ctx.addIssue({
         code: "custom",
-        message: "Two passwords should be equal",
+        message: "비밀번호가 일치하지 않습니다.",
         path: ["confirm_password"],
       });
     }
@@ -52,7 +44,7 @@ export async function createAccount(prevState: any, formData: FormData) {
     confirm_password: formData.get("confirmPassword"),
   };
 
-  const result = formSchema.safeParse(data); // INFO: safeParse를 사용하면 에러가 발생하지 않고, data를 클라이언트에 넘겨줄 수 있다.
+  const result = formSchema.safeParse(data); // INFO: safeParse를 사용하면 에러 없이, data를 클라이언트에 넘겨줄 수 있다.
 
   if (!result.success) {
     return result.error.flatten();
