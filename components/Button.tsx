@@ -2,11 +2,11 @@
 
 import { useFormStatus } from "react-dom";
 
-interface FormButtonProps {
+interface ButtonProps {
   text: string;
 }
 
-export default function FormButton({ text }: FormButtonProps) {
+export default function Button({ text }: ButtonProps) {
   const { pending } = useFormStatus(); // INFO: form 태그의 자식요소에서만 사용할 수 있음
 
   return (
