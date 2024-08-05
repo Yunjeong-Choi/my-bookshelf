@@ -1,9 +1,10 @@
+import AuthInput from "../_components/input";
+
 import {
   Container,
   ContentContainer,
   Divider,
   GitHubButton,
-  Input,
   LoginButton,
   LoginSection,
   Title,
@@ -15,8 +16,8 @@ export default function LogInPage() {
       <Title>안녕하세요!</Title>
       <ContentContainer>
         <LoginSection>
-          <Input placeholder="이메일" />
-          <Input placeholder="비밀번호" />
+          <AuthInput placeholder="이메일" />
+          <AuthInput placeholder="비밀번호" />
           <LoginButton href="/my-bookshelf" text="로그인하기" />
         </LoginSection>
         <Divider />

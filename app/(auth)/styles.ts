@@ -5,10 +5,11 @@ import styled from "styled-components";
 import LinkButton from "./_components/link-button";
 
 import color from "@/shared/styles/color";
-import { containerStyle } from "./_styles/container-style";
+import { authContainerStyle } from "./_styles/container-style";
+import { authTitleStyle } from "./_styles/title-style";
 
 export const Container = styled.div`
-  ${containerStyle}
+  ${authContainerStyle}
 `;
 
 export const TitleSection = styled.div`
@@ -24,9 +25,7 @@ export const TitleIcon = styled.span`
 `;
 
 export const Title = styled.h1`
-  color: ${color.warmgray100};
-  font-size: 3rem;
-  font-weight: 700;
+  ${authTitleStyle}
 `;
 
 export const ButtonSection = styled.div`

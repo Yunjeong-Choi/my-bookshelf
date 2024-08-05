@@ -2,7 +2,7 @@ import { css } from "styled-components";
 
 import color from "@/shared/styles/color";
 
-export const containerStyle = css`
+export const authContainerStyle = css`
   display: flex;
   flex-direction: column;
   align-items: center;

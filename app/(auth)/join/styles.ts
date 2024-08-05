@@ -5,19 +5,18 @@ import styled from "styled-components";
 import LinkButton from "../_components/link-button";
 
 import color from "@/shared/styles/color";
-import { containerStyle } from "../_styles/container-style";
+import { authContainerStyle } from "@/app/(auth)/_styles/container-style";
+import { authTitleStyle } from "../_styles/title-style";
 
 export const Container = styled.div`
-  ${containerStyle}
+  ${authContainerStyle}
   gap: 4rem;
   padding: 7.4rem 2.5rem 0rem 2.5rem;
 `;
 
 export const Title = styled.h1`
   align-self: flex-start;
-  color: ${color.warmgray100};
-  font-size: 3.6rem;
-  font-weight: 700;
+  ${authTitleStyle}
 `;
 
 export const ContentContainer = styled.div`
@@ -34,18 +33,7 @@ export const LoginSection = styled.section`
   width: 100%;
 `;
 
-export const Input = styled.input`
-  padding: 1.5rem;
-  color: ${color.warmgray100};
-  border-radius: 1rem;
-  border: 0.1rem solid ${color.warmgray100};
-
-  &::placeholder {
-    color: ${color.warmgray100};
-  }
-`;
-
-export const LoginButton = styled(LinkButton)`
+export const JoinButton = styled(LinkButton)`
   padding: 1.5rem;
 `;
 
@@ -55,6 +43,6 @@ export const Divider = styled.hr`
   background-color: ${color.warmgray100};
 `;
 
-export const GitHubButton = styled(LoginButton)`
+export const GitHubButton = styled(JoinButton)`
   padding: 1.5rem;
 `;
