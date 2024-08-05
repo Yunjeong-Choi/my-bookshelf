@@ -2,15 +2,13 @@
 
 import styled from "styled-components";
 
+import LinkButton from "./_components/link-button";
+
 import color from "@/shared/styles/color";
+import { containerStyle } from "./_styles/container-style";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: ${color.brown900};
+  ${containerStyle}
 `;
 
 export const TitleSection = styled.div`
@@ -40,12 +38,7 @@ export const ButtonSection = styled.div`
   padding: 0rem 2rem 4rem 2rem;
 `;
 
-export const StartButton = styled.button`
-  border-radius: 1rem;
-  background-color: ${color.brown700};
-  color: ${color.warmgray100};
-  font-weight: 600;
-
+export const StartButton = styled(LinkButton)`
   width: 100%;
   padding: 1.4rem 0rem;
 `;

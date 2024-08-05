@@ -18,7 +18,7 @@ export default function Home() {
         <Title>Open your bookshelf</Title>
       </TitleSection>
       <ButtonSection>
-        <StartButton>시작하기</StartButton>
+        <StartButton href="/login" text="시작하기" />
         <TextButtonWrapper>
           <TextButtonLabel>이미 계정이 있나요?</TextButtonLabel>
           <TextButton>로그인</TextButton>
