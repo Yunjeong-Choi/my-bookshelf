@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  nickname     String    @unique
+  email        String?   @unique
+  password     String?
+  github_id    String?   @unique
+  img          String? // @default("https://~ 기본이미지")
+  introduction String?
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  deledted_at  DateTime? // TODO: 삭제된 기록을 deleted_at으로 남기고 싶으면 어떻게 해야할까
+  book_list    MyBook[]
+}
+
+model Book {
+  id          Int       @id @default(autoincrement())
+  isbn        String    @unique
+  title       String
+  contents    String
+  datetime    DateTime
+  authors     String
+  publisher   String
+  translators String
+  thumbnail   String
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deledted_at DateTime?
+  MyBook      MyBook[]
+}
+
+model MyBook {
+  id          Int       @id @default(autoincrement())
+  rate        Int?
+  note        String?
+  imgs        String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deledted_at DateTime?
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      Int
+  book        Book      @relation(fields: [isbn], references: [isbn], onDelete: Cascade)
+  isbn        String
+}

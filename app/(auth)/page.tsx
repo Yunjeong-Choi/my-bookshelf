@@ -10,6 +10,8 @@ import {
   TitleSection,
 } from "./styles";
 
+import "@/lib/db";
+
 export default function Home() {
   return (
     <Container>
